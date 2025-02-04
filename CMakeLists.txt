@@ -17,3 +17,7 @@ add_subdirectory(stage4)
 add_executable(st2c main.cc)
 
 target_link_libraries(st2c PRIVATE stage1_2 stage3 stage4_c absyntax absyntax_utils)
+
+add_executable(st2st main.cc)
+
+target_link_libraries(st2st PRIVATE stage1_2 stage3 stage4_iec absyntax absyntax_utils)
