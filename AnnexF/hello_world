@@ -1,0 +1,18 @@
+PROGRAM HelloWorld
+
+// This is a simple "Hello World" program in Structured Text.
+
+// Define a string variable to hold the message.  No initialization here.
+VAR
+    message : STRING(20);
+END_VAR
+
+// The main program body.
+// Assign the value to the message variable.
+message := 'Hello, World!';
+
+//  Since we don't have a real output in this context, we'll just end the program.
+//  In a real PLC, you would replace the assignment above with the appropriate
+//  function/method call for your system (e.g., OutputString(message);).
+
+END_PROGRAM
