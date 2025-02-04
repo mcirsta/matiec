@@ -75,19 +75,13 @@
 #include <iostream>
 
 
-#include "config/config.h"
+//#include "config/config.h"
 #include "absyntax/absyntax.hh"
 #include "absyntax_utils/absyntax_utils.hh"
 #include "stage1_2/stage1_2.hh"
 #include "stage3/stage3.hh"
 #include "stage4/stage4.hh"
 #include "main.hh"
-
-
-#ifndef HGVERSION
-   #define HGVERSION ""
-#endif
-
 
 
 void error_exit(const char *file_name, int line_no, const char *errmsg, ...) {
@@ -131,7 +125,7 @@ static void printusage(const char *cmd) {
   printf("\n");
   printf("%s - Copyright (C) 2003-2014 \n"
          "This program comes with ABSOLUTELY NO WARRANTY!\n"
-         "This is free software licensed under GPL v3, and you are welcome to redistribute it under the conditions specified by this license.\n", PACKAGE_NAME);
+         "This is free software licensed under GPL v3, and you are welcome to redistribute it under the conditions specified by this license.\n", "stconv");
 }
 
 
@@ -171,7 +165,7 @@ int main(int argc, char **argv) {
       printusage(argv[0]);
       return 0;
     case 'v':
-      fprintf(stdout, "%s version %s\n" "changeset id: %s\n", PACKAGE_NAME, PACKAGE_VERSION, HGVERSION);      
+      fprintf(stdout, "%s version %s\n" "changeset id: %s\n", "stconv", "0.1");
       return 0;
     case 'l': runtime_options.relaxed_datatype_model   = true;  break;
     case 'p': runtime_options.pre_parsing              = true;  break;

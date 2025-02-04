@@ -36,4 +36,5 @@ set(STAGE12_SOURCES
 
 add_library(stage1_2 STATIC ${STAGE12_SOURCES})
 target_include_directories(stage1_2 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(stage1_2 PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 target_compile_definitions(stage1_2 PRIVATE DEFAULT_LIBDIR="lib")
