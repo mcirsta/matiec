@@ -1,0 +1,8 @@
+PROGRAM HelloWorld
+VAR
+    message : STRING(20);
+END_VAR
+
+message := 'Hello, World!';
+
+END_PROGRAM

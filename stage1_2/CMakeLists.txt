@@ -28,13 +28,15 @@ add_custom_command(
 
 # Add the generated files to the list of sources
 set(STAGE12_SOURCES
-    ${LEXER_OUTPUT}
-    ${PARSER_OUTPUT_SOURCE}
     create_enumtype_conversion_functions.cc
     stage1_2.cc
 )
 
 add_library(stage1_2 STATIC ${STAGE12_SOURCES})
+target_sources(stage1_2 PRIVATE     ${LEXER_OUTPUT}
+                                    ${PARSER_OUTPUT_SOURCE}
+)
+
 target_include_directories(stage1_2 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(stage1_2 PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 target_compile_definitions(stage1_2 PRIVATE DEFAULT_LIBDIR="lib")

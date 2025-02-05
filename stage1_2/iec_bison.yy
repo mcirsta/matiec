@@ -4638,6 +4638,8 @@ single_byte_string_spec:
 */
   STRING '[' integer ']'
 	{$$ = new single_byte_string_spec_c(new single_byte_limited_len_string_spec_c(new string_type_name_c(locloc(@1)), $3, locloc(@$)), NULL, locloc(@$));}
+|  STRING '(' integer ')'
+  	{$$ = new single_byte_string_spec_c(new single_byte_limited_len_string_spec_c(new string_type_name_c(locloc(@1)), $3, locloc(@$)), NULL, locloc(@$));}
 /*
 | STRING ASSIGN single_byte_character_string
 	{$$ = new single_byte_string_spec_c($1, NULL, $3, locloc(@$));}
