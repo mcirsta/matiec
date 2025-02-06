@@ -1,6 +1,7 @@
+//just a program
 PROGRAM HelloWorld
 VAR
-    message : STRING(20);
+    message : STRING;
 END_VAR
 
 message := 'Hello, World!';

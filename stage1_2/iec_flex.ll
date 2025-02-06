@@ -642,6 +642,9 @@ pragma ("{"[^}]*"}")|("{{"([^}]|"}"[^}])*"}}")
 comment_beg  "(*"
 comment_end  "*)"
 
+/* Single-line comment pattern */
+single_line_comment "//"[^\n]*
+
 /* However, bison has a shift/reduce conflict in bison, when parsing formal function/FB
  * invocations with the 'NOT <variable_name> =>' syntax (which needs two look ahead 
  * tokens to be parsed correctly - and bison being LALR(1) only supports one).
@@ -715,8 +718,8 @@ il_whitespace_char		[ \f\r\t\v]
 st_whitespace			[ \f\n\r\t\v]*
 il_whitespace			[ \f\r\t\v]*
 
-st_whitespace_or_pragma_or_commentX	({st_whitespace})|({pragma})|({comment})
-il_whitespace_or_pragma_or_commentX	({il_whitespace})|({pragma})|({comment})
+st_whitespace_or_pragma_or_commentX	({st_whitespace})|({pragma})|({comment})|({single_line_comment})
+il_whitespace_or_pragma_or_commentX	({il_whitespace})|({pragma})|({comment})|({single_line_comment})
 
 st_whitespace_or_pragma_or_comment	{st_whitespace_or_pragma_or_commentX}*
 il_whitespace_or_pragma_or_comment	{il_whitespace_or_pragma_or_commentX}*
@@ -1308,6 +1311,13 @@ END_CONFIGURATION	BEGIN(INITIAL); return END_CONFIGURATION;
 {comment_end}						yy_pop_state();
 .							/* Ignore text inside comment! */
 \n							/* Ignore text inside comment! */
+}
+
+{single_line_comment} {
+    /* Ignore the single-line comment */
+    /* You might want to increment line number here if needed:
+       yylineno++;
+    */
 }
 
 	/*****************************************/
